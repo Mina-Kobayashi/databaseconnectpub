@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 app = Flask(__name__)
-app.secret_key = b'ppaegassemtsrif...'
+app.secret_key = b'.'
 
 
 

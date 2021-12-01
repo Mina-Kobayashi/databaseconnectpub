@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+<div class="register my-5">
+<h1 class="text-center fw-bold my-5">登録フォーム</h1>
+
+<form class="w-50 mx-auto" method="post" action="/">
+  <div class="mb-3">
+    <label for="examplename" class="form-label">お名前(スペースなしでおねがいいたします) / Your name(Please not enter any space) </label>
+    <input type="text" name="name" class="form-control" id="examplename" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">メールアドレス / Email address</label>
+    <input type="email" name="mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+  </div>
+  <div>
+    <label for="yourage" class="form-label">年齢 / Your age</label>
+    <input type="number" name="age" class="form-control" id="yourage" min="10" max="100" placeholder="30" required>
+  </div>
+
+  <div class="my-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+    <label class="form-check-label" for="exampleCheck1" >確認お願いいたします。 / Check me out</label>
+  </div>
+   <div class="d-grid gap-2 mx-auto">
+     <input class="btn btn-warning" type="submit" value="送信 / Submit">
+   </div>
+</form>
+</div>
+
+{% if post %}
+<div class="text-center my-5 py-5 bg-warning">
+  <h3>送信ありがとうございます</h3>
+  <h4>{{ name }}さん　こんにちは</h4>
+  <h4>あなたのメールアドレス:{{ mail }}</h4>
+  <h4>あなたの年齢：{{ age }}さい</h4>
+</div>
+
+
+
+<h2 class="text-center">みんなの送信履歴</h2>
+<div class="w-50 m-auto my-5">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">Email address</th>
+      <th scope="col">age</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in datas | reverse %}
+  <tr>
+     <td>{{ data.name }}</td>
+     <td>{{ data.mail }}</td>
+     <td>{{ data.age }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+
+</div>
+
+{% endif %}
+
+<div class="search py-5 bg-primary text-white">
+
+<h2 class="mb-5 text-center">検索 / Search</h2>
+<h4 class="text-center">登録したか確認したい方はこちらでご検索ください。 <br> If you want to confirm whether you registered or not, please search here.</h4>
+<div class="d-grid gap-2 col-6 mx-auto my-5">
+    <a class="btn btn-warning" href="/search" role="button">検索ページへ / Search Page</a>
+</div>
+
+</div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
+</body>
+</html>

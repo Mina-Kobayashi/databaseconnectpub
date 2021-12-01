@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<body class="bg-primary">
+
+<div class="search py-5 text-white">
+
+
+<h2 class="my-5 text-center">検索 / Search</h2>
+<h4 class="text-center">登録したか確認したい方はこちらでご検索ください。 <br> If you want to confirm whether you registered or not, please search here.</h4>
+
+
+<form action="/search" method="post" class="w-50 mx-auto my-5">
+    <label for="find" class="">検索したいお名前を入力ください / Please enter name you want to search</label>
+    <input type="text" class="form-control my-3" id="find" name="find" placeholder="例：鈴木太郎">
+
+    <div class="d-grid gap-2 mx-auto">
+        <input class="btn btn-outline-warning" type="submit" value="検索 / Submit">
+    </div>
+</form>
+{% if search %}
+
+<div class="w-75 mx-auto">
+   <table class="table table-primary">
+   <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">Email address</th>
+      <th scope="col">age</th>
+    </tr>
+   </thead>
+   <tbody>
+   {% for i in result %}
+      <tr>
+          <td>{{ i.name }}</td>
+          <td>{{ i.mail }}</td>
+          <td>{{ i.age }}</td>
+      </tr>
+   {% endfor %}
+   </tbody>
+   </table>
+
+</div>
+
+{% if res %}
+    <h2 class="text-center mb-5">{{ noinfo }}</h2>
+{% endif %}
+
+
+
+
+
+{% endif %}
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a class="btn btn-warning text-primary fw-bold" href="/" role="button">登録画面へ戻る</a>
+</div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
+</body>
+</html>
